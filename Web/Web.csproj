@@ -127,6 +127,7 @@
     <Content Include="Views\TimeCode\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DependencyRoot.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\TimeCodeController.cs" />

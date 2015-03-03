@@ -9,12 +9,17 @@ namespace TimesheetPoc.Web.Controllers
 {
     public class DepartmentController : Controller
     {
-        private TimesheetsContext db = new TimesheetsContext();
+        private ITimesheetsContext _context;
+
+        public DepartmentController(ITimesheetsContext context)
+        {
+            this._context = context;
+        }
 
         // GET: /Department/
         public ActionResult Index()
         {
-            return View(db.Departments.ToList());
+            return View(_context.Departments.ToList());
         }
 
         // GET: /Department/Details/5
@@ -24,7 +29,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
+            Department department = _context.Departments.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -47,8 +52,8 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
-                db.SaveChanges();
+                _context.Departments.Add(department);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -62,7 +67,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
+            Department department = _context.Departments.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -79,8 +84,8 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
-                db.SaveChanges();
+                _context.Entry(department).State = EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(department);
@@ -93,7 +98,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
+            Department department = _context.Departments.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -106,9 +111,9 @@ namespace TimesheetPoc.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Department department = db.Departments.Find(id);
-            db.Departments.Remove(department);
-            db.SaveChanges();
+            Department department = _context.Departments.Find(id);
+            _context.Departments.Remove(department);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -116,7 +121,7 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _context.Dispose();
             }
             base.Dispose(disposing);
         }
