@@ -5,9 +5,9 @@ namespace TimesheetPoc.Persistence
 {
     public class TimesheetsContext : DbContext, ITimesheetsContext
     {
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<TimeCode> TimeCodes { get; set; }
-        public DbSet<Timesheet> Timesheets { get; set; }
+        public IDbSet<Employee> Employees { get; set; }
+        public IDbSet<Department> Departments { get; set; }
+        public IDbSet<TimeCode> TimeCodes { get; set; }
+        public IDbSet<Timesheet> Timesheets { get; set; }
     }
 }

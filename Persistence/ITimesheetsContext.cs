@@ -6,10 +6,10 @@ namespace TimesheetPoc.Persistence
 {
     public interface ITimesheetsContext
     {
-        DbSet<Employee> Employees { get; set; }
-        DbSet<Department> Departments { get; set; }
-        DbSet<TimeCode> TimeCodes { get; set; }
-        DbSet<Timesheet> Timesheets { get; set; }
+        IDbSet<Employee> Employees { get; set; }
+        IDbSet<Department> Departments { get; set; }
+        IDbSet<TimeCode> TimeCodes { get; set; }
+        IDbSet<Timesheet> Timesheets { get; set; }
         
         int SaveChanges();
         DbEntityEntry<T> Entry<T>(T entity) where T : class;

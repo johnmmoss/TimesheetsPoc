@@ -33,13 +33,13 @@ namespace TimesheetPoc.Web.Controllers
         }
 
         // GET: /TimeCode/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
+            TimeCode timecode = _context.TimeCodes.Find(id);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -71,13 +71,13 @@ namespace TimesheetPoc.Web.Controllers
         }
 
         // GET: /TimeCode/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
+            TimeCode timecode = _context.TimeCodes.Find(id);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -102,13 +102,13 @@ namespace TimesheetPoc.Web.Controllers
         }
 
         // GET: /TimeCode/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
+            TimeCode timecode = _context.TimeCodes.Find(id);
             if (timecode == null)
             {
                 return HttpNotFound();
