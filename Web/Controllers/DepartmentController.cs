@@ -16,6 +16,11 @@ namespace TimesheetPoc.Web.Controllers
             this._context = context;
         }
 
+        public DepartmentController()
+        {
+            this._context = new TimesheetsContext();
+        }
+
         // GET: /Department/
         public ActionResult Index()
         {

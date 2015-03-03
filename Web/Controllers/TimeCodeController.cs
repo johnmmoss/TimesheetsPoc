@@ -14,12 +14,22 @@ namespace TimesheetPoc.Web.Controllers
 {
     public class TimeCodeController : Controller
     {
-        private TimesheetsContext db = new TimesheetsContext();
+        private ITimesheetsContext _context;
+
+        public TimeCodeController()
+        {
+            _context = new TimesheetsContext();
+        }
+
+        public TimeCodeController(ITimesheetsContext context)
+        {
+            _context = context;
+        }
 
         // GET: /TimeCode/
         public async Task<ActionResult> Index()
         {
-            return View(await db.TimeCodes.ToListAsync());
+            return View(await _context.TimeCodes.ToListAsync());
         }
 
         // GET: /TimeCode/Details/5
@@ -29,7 +39,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await db.TimeCodes.FindAsync(id);
+            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -48,12 +58,12 @@ namespace TimesheetPoc.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="Id,Name,Description")] TimeCode timecode)
+        public ActionResult Create([Bind(Include="Id,Name,Description")] TimeCode timecode)
         {
             if (ModelState.IsValid)
             {
-                db.TimeCodes.Add(timecode);
-                await db.SaveChangesAsync();
+                _context.TimeCodes.Add(timecode);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +77,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await db.TimeCodes.FindAsync(id);
+            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -80,12 +90,12 @@ namespace TimesheetPoc.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="Id,Name,Description")] TimeCode timecode)
+        public ActionResult Edit([Bind(Include="Id,Name,Description")] TimeCode timecode)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(timecode).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _context.Entry(timecode).State = EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(timecode);
@@ -98,7 +108,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = await db.TimeCodes.FindAsync(id);
+            TimeCode timecode = await _context.TimeCodes.FindAsync(id);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -109,11 +119,11 @@ namespace TimesheetPoc.Web.Controllers
         // POST: /TimeCode/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            TimeCode timecode = await db.TimeCodes.FindAsync(id);
-            db.TimeCodes.Remove(timecode);
-            await db.SaveChangesAsync();
+            TimeCode timecode = _context.TimeCodes.Find(id);
+            _context.TimeCodes.Remove(timecode);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -121,7 +131,7 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _context.Dispose();
             }
             base.Dispose(disposing);
         }

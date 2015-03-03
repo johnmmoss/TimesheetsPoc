@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITimesheetsContext.cs" />
     <Compile Include="Migrations\201502212031438_InitCreate.cs" />
     <Compile Include="Migrations\201502212031438_InitCreate.Designer.cs">
       <DependentUpon>201502212031438_InitCreate.cs</DependentUpon>
