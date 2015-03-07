@@ -145,9 +145,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}</Project>
-      <Name>Domain</Name>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{b9e16b44-850f-49b8-947e-dfd1a6c5ed68}</Project>
+      <Name>Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{321E2370-6559-4783-93CD-4B7679479B03}</Project>
