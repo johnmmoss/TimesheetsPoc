@@ -2,18 +2,13 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
-<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>TimeCode</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">

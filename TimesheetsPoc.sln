@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTests", "Tests\AcceptanceTests\AcceptanceTests.csproj", "{266F5BD4-2D37-4A1C-8C46-07886505EA29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{85B1AF4B-E412-4F92-8AD1-DB15A70345D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +29,15 @@ Global
 		{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266F5BD4-2D37-4A1C-8C46-07886505EA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266F5BD4-2D37-4A1C-8C46-07886505EA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266F5BD4-2D37-4A1C-8C46-07886505EA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266F5BD4-2D37-4A1C-8C46-07886505EA29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{266F5BD4-2D37-4A1C-8C46-07886505EA29} = {85B1AF4B-E412-4F92-8AD1-DB15A70345D4}
 	EndGlobalSection
 EndGlobal
