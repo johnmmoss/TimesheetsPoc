@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Web\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -53,23 +59,44 @@
     <Compile Include="Core\BasePage.cs" />
     <Compile Include="Core\WebDriverManager.cs" />
     <Compile Include="Data\DatabaseHelper.cs" />
+    <Compile Include="Department.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Department.feature</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HomePage.feature</DependentUpon>
     </Compile>
-    <Compile Include="HomePageSteps.cs" />
+    <Compile Include="Pages\DepartmentPage.cs" />
+    <Compile Include="Steps\DepartmentSteps.cs" />
+    <Compile Include="Steps\HomePageSteps.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Core\Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Department.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Department.feature.cs</LastGenOutput>
+    </None>
     <None Include="HomePage.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>HomePage.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entities\Entities.csproj">
+      <Project>{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Persistence\Persistence.csproj">
+      <Project>{321E2370-6559-4783-93CD-4B7679479B03}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
