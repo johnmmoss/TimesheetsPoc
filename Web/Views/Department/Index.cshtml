@@ -6,7 +6,7 @@
 
 
 
-<table class="table">
+<table class="table" id="main">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Code)
@@ -19,7 +19,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="tr-content">
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
             </td>

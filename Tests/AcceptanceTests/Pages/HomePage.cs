@@ -15,7 +15,7 @@ namespace AcceptanceTests.Pages
 
         public DepartmentPage NavigateToDepartmentPage()
         {
-            var registerLink = webDriver.FindElement(By.Id("registerLink"));
+            var registerLink = webDriver.FindElement(By.Id("menu-departments"));
             registerLink.Click();
             return new DepartmentPage(webDriver);
         }

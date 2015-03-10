@@ -12,9 +12,20 @@ namespace AcceptanceTests.Pages
             this.webDriver = webDriver;
         }
 
-        public List<object> GetDepartments()
+        public List<List<string>> GetDepartments()
         {
-            throw new System.NotImplementedException();
+            var trElements = webDriver.FindElements(By.ClassName("tr-content"));
+            var result = new List<List<string>>();
+            foreach (var trElement in trElements)
+            {
+                var row = new List<string>();
+                foreach (var tdElement in trElement.FindElements(By.TagName("td"))) 
+                {
+                    row.Add(tdElement.Text);
+                }
+                result.Add(row);
+            }
+            return result;
         }
     }
 }

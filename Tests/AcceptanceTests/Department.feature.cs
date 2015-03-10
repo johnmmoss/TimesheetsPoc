@@ -105,19 +105,15 @@ this.FeatureBackground();
  testRunner.And("I navigate to the Departments page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Code",
                         "Department"});
             table2.AddRow(new string[] {
-                        "1",
                         "ENG01",
                         "Engineering 1"});
             table2.AddRow(new string[] {
-                        "2",
                         "ENG06",
                         "Engineering 6"});
             table2.AddRow(new string[] {
-                        "1",
                         "SUP01",
                         "Support 1"});
 #line 16
