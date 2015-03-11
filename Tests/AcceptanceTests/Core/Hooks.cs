@@ -13,7 +13,7 @@ namespace AcceptanceTests.Core
         public static void BeforeFeature()
         {
             WebDriverManager.StartSession();
-            DatabaseHelper.TearDown();
+            
         }
 
         [AfterFeature]
@@ -26,6 +26,8 @@ namespace AcceptanceTests.Core
         [BeforeScenario]
         public void BeforeScenario()
         {
+            DatabaseHelper.TearDown();
+
             // At the begining of the scenario, we are on the homepage
             var webDriver = FeatureContext.Current.Get<IWebDriver>();
             var homePage = new HomePage(webDriver);

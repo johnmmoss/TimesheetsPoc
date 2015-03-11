@@ -16,8 +16,8 @@ Scenario: Departments list page displays all current departments
 	Then the following Departments are visible:
 	| Code  | Department    |
 	| ENG01 | Engineering 1 |
-	| SUP01 | Support 1     |
 	| ENG06 | Engineering 6 |
+	| SUP01 | Support 1     |
 
 Scenario: A Department can be added to the system
 	Given I am logged in as an Administrator

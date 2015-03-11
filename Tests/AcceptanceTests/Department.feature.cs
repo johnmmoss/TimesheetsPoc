@@ -111,11 +111,11 @@ this.FeatureBackground();
                         "ENG01",
                         "Engineering 1"});
             table2.AddRow(new string[] {
-                        "SUP01",
-                        "Support 1"});
-            table2.AddRow(new string[] {
                         "ENG06",
                         "Engineering 6"});
+            table2.AddRow(new string[] {
+                        "SUP01",
+                        "Support 1"});
 #line 16
  testRunner.Then("the following Departments are visible:", ((string)(null)), table2, "Then ");
 #line hidden

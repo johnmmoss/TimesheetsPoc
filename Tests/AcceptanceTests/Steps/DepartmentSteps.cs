@@ -79,5 +79,54 @@ namespace AcceptanceTests.Steps
             Assert.That(rowValues.Find(x => x == code), Is.Not.Null);
             Assert.That(rowValues.Find(x => x == description), Is.Not.Null);
         }
+
+        [Given(@"I click to edit department with a code of '(.*)'")]
+        public void GivenIClickToEditDepartmentWithACodeOf(string code)
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var departmentsEditPage = departmentsPage.NavigateToDepartmentEditPage(code);
+            ScenarioContext.Current.Set<DepartmentEditPage>(departmentsEditPage);
+        }
+
+        [Given(@"I update this to have a Code of '(.*)' and a Description of '(.*)'")]
+        public void GivenIUpdateThisToHaveACodeOfAndADescriptionOf(string code, string description)
+        {
+            var departmentEditPage = ScenarioContext.Current.Get<DepartmentEditPage>();
+            departmentEditPage.EditDepartment(code, description);
+        }
+
+        [Then(@"the department with a Code of '(.*)' and a Description of '(.*)' exists in the system")]
+        public void ThenTheDepartmentWithACodeOfAndADescriptionOfExistsInTheSystem(string expectedCode, string expectedDescription)
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var rowValues = departmentsPage.GetDepartmentByCode(expectedCode);
+
+            Assert.That(rowValues.Find(x => x == expectedCode), Is.Not.Null);
+            Assert.That(rowValues.Find(x => x == expectedDescription), Is.Not.Null);
+        }
+
+        [Given(@"I click to delete a department with a code of '(.*)'")]
+        public void GivenIClickToDeleteADepartmentWithACodeOf(string code)
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var departmentsDeletePage = departmentsPage.NavigateToDepartmentDeletePage(code);
+            ScenarioContext.Current.Set<DepartmentDeletePage>(departmentsDeletePage);
+        }
+
+        [Given(@"I click to delete the department on the confirm screen")]
+        public void GivenIClickToDeleteTheDepartmentOnTheConfirmScreen()
+        {
+            var departmentsDeletePage = ScenarioContext.Current.Get<DepartmentDeletePage>();
+            departmentsDeletePage.Delete();
+        }
+
+        [Then(@"the department with a Code of '(.*)' no longer exists in the system")]
+        public void ThenTheDepartmentWithACodeOfNoLongerExistsInTheSystem(string code)
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var rowExists = departmentsPage.RowExists(code);
+
+            Assert.IsFalse(rowExists);
+        }
     }
 }

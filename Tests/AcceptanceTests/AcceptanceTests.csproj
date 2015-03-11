@@ -70,6 +70,8 @@
       <DependentUpon>HomePage.feature</DependentUpon>
     </Compile>
     <Compile Include="Pages\DepartmentAddPage.cs" />
+    <Compile Include="Pages\DepartmentDeletePage.cs" />
+    <Compile Include="Pages\DepartmentEditPage.cs" />
     <Compile Include="Pages\DepartmentPage.cs" />
     <Compile Include="Steps\DepartmentSteps.cs" />
     <Compile Include="Steps\HomePageSteps.cs" />

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 
 namespace AcceptanceTests.Pages
@@ -35,19 +37,46 @@ namespace AcceptanceTests.Pages
             return new DepartmentAddPage(webDriver);
         }
 
+        public DepartmentEditPage NavigateToDepartmentEditPage(string code)
+        {
+            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]/td/a[normalize-space(text()) = \"Edit\"]", code);
+            var editLink = webDriver.FindElement(By.XPath(xpath));
+            editLink.Click();
+
+            return new DepartmentEditPage(webDriver);
+        }
+
         public List<string> GetDepartmentByCode(string code)
         {
-            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
-            var row = webDriver.FindElement(By.XPath(xpath));
+            var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
+            var row = webDriver.FindElement(By.XPath(rowXPath));
 
-            var result = new List<string>();
+            return row.FindElements(By.ClassName("td-content")).Select(td => td.Text).ToList();
+        }
 
-            foreach (var td in row.FindElements(By.ClassName("td-content")))
+        public bool RowExists(string code)
+        {
+            try
             {
-                result.Add(td.Text);
-            }
+                var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
+                webDriver.FindElement(By.XPath(rowXPath));
 
-            return result;
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+            
+        }
+
+        public DepartmentDeletePage NavigateToDepartmentDeletePage(string code)
+        {
+            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]/td/a[normalize-space(text()) = \"Delete\"]", code);
+            var deleteLink = webDriver.FindElement(By.XPath(xpath));
+            deleteLink.Click();
+
+            return new DepartmentDeletePage(webDriver);
         }
     }
 }
