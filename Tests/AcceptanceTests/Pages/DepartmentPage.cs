@@ -27,5 +27,27 @@ namespace AcceptanceTests.Pages
             }
             return result;
         }
+
+        public DepartmentAddPage NavigateToDepartmentAddPage()
+        {
+            webDriver.FindElement(By.Id("button-create")).Click();
+
+            return new DepartmentAddPage(webDriver);
+        }
+
+        public List<string> GetDepartmentByCode(string code)
+        {
+            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
+            var row = webDriver.FindElement(By.XPath(xpath));
+
+            var result = new List<string>();
+
+            foreach (var td in row.FindElements(By.ClassName("td-content")))
+            {
+                result.Add(td.Text);
+            }
+
+            return result;
+        }
     }
 }

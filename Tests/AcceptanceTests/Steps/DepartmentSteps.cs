@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AcceptanceTests.Pages;
+﻿using AcceptanceTests.Pages;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TimesheetPoc.Domain;
@@ -58,6 +53,31 @@ namespace AcceptanceTests.Steps
                     Assert.AreEqual(visibleDepartments[i][k], table.Rows[i][k]);
                 }
             }
+        }
+
+        [Given(@"I click to create a new department")]
+        public void GivenIClickToCreateANewDepartment()
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var departmentAddPage = departmentsPage.NavigateToDepartmentAddPage();
+            ScenarioContext.Current.Set<DepartmentAddPage>(departmentAddPage);
+        }
+
+        [Given(@"I add a new department with a Code of '(.*)' and a Description of '(.*)'")]
+        public void GivenIAddANewDepartmentWithACodeOfAndADescriptionOf(string code, string description)
+        {
+            var departmentAddPage = ScenarioContext.Current.Get<DepartmentAddPage>();
+            departmentAddPage.AddDepartment(code, description);
+        }
+
+        [Then(@"the department with a Code of '(.*)' and a Description of '(.*)' was added to the system")]
+        public void ThenTheDepartmentWithACodeOfAndADescriptionOfWasAddedToTheSystem(string code, string description)
+        {
+            var departmentsPage = ScenarioContext.Current.Get<DepartmentPage>();
+            var rowValues = departmentsPage.GetDepartmentByCode(code);
+
+            Assert.That(rowValues.Find(x => x == code), Is.Not.Null);
+            Assert.That(rowValues.Find(x => x == description), Is.Not.Null);
         }
     }
 }
