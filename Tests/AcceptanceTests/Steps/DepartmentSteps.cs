@@ -53,15 +53,9 @@ namespace AcceptanceTests.Steps
             var visibleDepartments = departmentsPage.GetDepartments();
             for(int i=0; i < table.Rows.Count; i++)
             {
-                for (int k = 0; k < table.Rows.Count; k++)
+                for (int k = 0; k < table.Rows[i].Count; k++)
                 {
-                    // Need to fix this fundge. Select just the values we want!
-                    // - visibleDepartments includes an empty row for the table header
-                    // - visibleDepartments includes a column for the actions links
-                    if (visibleDepartments[i].Any() && table.Rows[i].Count < k)
-                    {
-                        Assert.AreEqual(visibleDepartments[i][k], table.Rows[i][k]);
-                    }
+                    Assert.AreEqual(visibleDepartments[i][k], table.Rows[i][k]);
                 }
             }
         }

@@ -19,7 +19,7 @@ namespace AcceptanceTests.Pages
             foreach (var trElement in trElements)
             {
                 var row = new List<string>();
-                foreach (var tdElement in trElement.FindElements(By.TagName("td"))) 
+                foreach (var tdElement in trElement.FindElements(By.ClassName("td-content"))) 
                 {
                     row.Add(tdElement.Text);
                 }
