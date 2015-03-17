@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 
 namespace AcceptanceTests.Pages
@@ -26,6 +27,21 @@ namespace AcceptanceTests.Pages
                 result.Add(row);
             }
             return result;
+        }
+
+        public TimeCodeAddPage NavigateToAddPage()
+        {
+            webDriver.FindElement(By.XPath("//a[text() = 'Create New']")).Click();
+
+            return new TimeCodeAddPage(webDriver);
+        }
+
+        public List<string> GetTimeCodeByName(string name)
+        {
+            var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", name);
+            var row = webDriver.FindElement(By.XPath(rowXPath));
+
+            return row.FindElements(By.ClassName("td-content")).Select(td => td.Text).ToList();
         }
     }
 }

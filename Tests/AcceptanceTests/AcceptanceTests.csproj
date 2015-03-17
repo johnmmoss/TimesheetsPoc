@@ -73,6 +73,7 @@
     <Compile Include="Pages\Department\DepartmentDeletePage.cs" />
     <Compile Include="Pages\Department\DepartmentEditPage.cs" />
     <Compile Include="Pages\Department\DepartmentPage.cs" />
+    <Compile Include="Pages\TimeCode\TimeCodeAddPage.cs" />
     <Compile Include="Pages\TimeCode\TimeCodePage.cs" />
     <Compile Include="Steps\DepartmentSteps.cs" />
     <Compile Include="Steps\HomePageSteps.cs" />

@@ -57,19 +57,27 @@ namespace AcceptanceTests
         [Given(@"I click to create a new time code")]
         public void GivenIClickToCreateANewTimeCode()
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            var timeCodeAddPage = timeCodePage.NavigateToAddPage();
+            ScenarioContext.Current.Set<TimeCodeAddPage>(timeCodeAddPage);
         }
 
         [Given(@"I add a new time code with a name of '(.*)' and a description of '(.*)'")]
-        public void GivenIAddANewTimeCodeWithANameOfAndADescriptionOf(string p0, string p1)
+        public void GivenIAddANewTimeCodeWithANameOfAndADescriptionOf(string name, string description)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodeAddPage = ScenarioContext.Current.Get<TimeCodeAddPage>();
+            timeCodeAddPage.AddTimeCode(name, description);
+
         }
 
         [Then(@"the time code with a name of '(.*)' and a description of '(.*)' was added to the system")]
-        public void ThenTheTimeCodeWithANameOfAndADescriptionOfWasAddedToTheSystem(string p0, string p1)
+        public void ThenTheTimeCodeWithANameOfAndADescriptionOfWasAddedToTheSystem(string name, string description)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            var rowValues = timeCodePage.GetTimeCodeByName(name);
+
+            Assert.That(rowValues.Find(x => x == name), Is.Not.Null);
+            Assert.That(rowValues.Find(x => x == description), Is.Not.Null);
         }
 
         [Given(@"I click to edit time code with a code of '(.*)'")]
