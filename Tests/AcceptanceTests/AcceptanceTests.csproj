@@ -78,6 +78,11 @@
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Core\Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeCode.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeCode.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +95,10 @@
       <LastGenOutput>HomePage.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="TimeCode.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TimeCode.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Entities\Entities.csproj">
