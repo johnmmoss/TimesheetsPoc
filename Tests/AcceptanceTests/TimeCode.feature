@@ -12,7 +12,7 @@ Background:
 
 Scenario: TimeCodes list page displays all current TimeCodes
 	Given I am logged in as an Administrator
-	And I navigate to the TimeCodes list page
+	And I navigate to the time codes list page
 	Then the following TimeCodes are visible:
 	| Name          | Description                        |
 	| Annual Leave  | Full time staff Annual Leave       |

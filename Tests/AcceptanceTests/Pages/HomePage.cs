@@ -19,5 +19,12 @@ namespace AcceptanceTests.Pages
             registerLink.Click();
             return new DepartmentPage(webDriver);
         }
+
+        public TimeCodePage NavigateToTimeCodePage()
+        {
+            webDriver.FindElement(By.Id("menu-timecodes")).Click();
+
+            return new TimeCodePage(webDriver);
+        }
     }
 }

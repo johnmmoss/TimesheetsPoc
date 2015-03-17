@@ -17,11 +17,11 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <tr class="tr-content">
+        <td class="td-content">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td class="td-content">
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>

@@ -8,6 +8,7 @@ namespace AcceptanceTests.Data
         {
             // Code to empty the database tables
             DeleteAndReseed("Departments");
+            DeleteAndReseed("TimeCodes");
         }
 
         public static void Reset()
