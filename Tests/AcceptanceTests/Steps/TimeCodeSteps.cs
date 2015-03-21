@@ -81,39 +81,51 @@ namespace AcceptanceTests
         }
 
         [Given(@"I click to edit time code with a code of '(.*)'")]
-        public void GivenIClickToEditTimeCodeWithACodeOf(string p0)
+        public void GivenIClickToEditTimeCodeWithACodeOf(string name)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            var timeCodeEditPage = timeCodePage.NavigateToEditPage(name);
+            ScenarioContext.Current.Set<TimeCodeEditPage>(timeCodeEditPage);
         }
 
         [Given(@"I update this to have a name of '(.*)' and a description of '(.*)'")]
-        public void GivenIUpdateThisToHaveANameOfAndADescriptionOf(string p0, string p1)
+        public void GivenIUpdateThisToHaveANameOfAndADescriptionOf(string name, string description)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodeEditPage = ScenarioContext.Current.Get<TimeCodeEditPage>();
+            timeCodeEditPage.EditPage(name, description);
         }
 
         [Then(@"the department with a name of '(.*)' and a description of '(.*)' exists in the system")]
-        public void ThenTheDepartmentWithANameOfAndADescriptionOfExistsInTheSystem(string p0, string p1)
+        public void ThenTheDepartmentWithANameOfAndADescriptionOfExistsInTheSystem(string name, string description)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            var rowValues = timeCodePage.GetTimeCodeByName(name);
+
+            Assert.That(rowValues.Find(x => x == name), Is.Not.Null);
+            Assert.That(rowValues.Find(x => x == description), Is.Not.Null);
         }
 
         [Given(@"I click to delete a time code with a name of '(.*)'")]
-        public void GivenIClickToDeleteATimeCodeWithANameOf(string p0)
+        public void GivenIClickToDeleteATimeCodeWithANameOf(string name)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            var timeCodeDeletePage = timeCodePage.NavigateToDeletePage(name);
+            ScenarioContext.Current.Set<TimeCodeDeletePage>(timeCodeDeletePage);
         }
 
         [Given(@"I click to delete the time code on the confirm screen")]
         public void GivenIClickToDeleteTheTimeCodeOnTheConfirmScreen()
         {
-            ScenarioContext.Current.Pending();
+            var timeCodeDeletePage = ScenarioContext.Current.Get<TimeCodeDeletePage>();
+            timeCodeDeletePage.Delete();
+
         }
 
         [Then(@"the time code with a name of '(.*)' no longer exists in the system")]
-        public void ThenTheTimeCodeWithANameOfNoLongerExistsInTheSystem(string p0)
+        public void ThenTheTimeCodeWithANameOfNoLongerExistsInTheSystem(string name)
         {
-            ScenarioContext.Current.Pending();
+            var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
+            timeCodePage.RowExists(name);
         }
 
     }

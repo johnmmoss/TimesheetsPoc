@@ -43,5 +43,39 @@ namespace AcceptanceTests.Pages
 
             return row.FindElements(By.ClassName("td-content")).Select(td => td.Text).ToList();
         }
+
+        public TimeCodeEditPage NavigateToEditPage(string name)
+        {
+            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]/td/a[normalize-space(text()) = \"Edit\"]", name);
+            var editLink = webDriver.FindElement(By.XPath(xpath));
+            editLink.Click();
+
+            return new TimeCodeEditPage(webDriver);
+        }
+
+        public TimeCodeDeletePage NavigateToDeletePage(string name)
+        {
+            var xpath = string.Format("//tr[td[normalize-space(text())='{0}']]/td/a[normalize-space(text()) = \"Delete\"]", name);
+            var deleteLink = webDriver.FindElement(By.XPath(xpath));
+            deleteLink.Click();
+
+            return new TimeCodeDeletePage(webDriver);
+        }
+
+        public bool RowExists(string name)
+        {
+            try
+            {
+                var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
+                webDriver.FindElement(By.XPath(rowXPath));
+
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+
+        }
     }
 }
