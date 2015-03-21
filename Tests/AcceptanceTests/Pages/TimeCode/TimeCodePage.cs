@@ -66,7 +66,7 @@ namespace AcceptanceTests.Pages
         {
             try
             {
-                var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", code);
+                var rowXPath = string.Format("//tr[td[normalize-space(text())='{0}']]", name);
                 webDriver.FindElement(By.XPath(rowXPath));
 
                 return true;

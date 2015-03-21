@@ -125,7 +125,7 @@ namespace AcceptanceTests
         public void ThenTheTimeCodeWithANameOfNoLongerExistsInTheSystem(string name)
         {
             var timeCodePage = ScenarioContext.Current.Get<TimeCodePage>();
-            timeCodePage.RowExists(name);
+            Assert.False(timeCodePage.RowExists(name));
         }
 
     }
