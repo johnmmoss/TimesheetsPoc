@@ -59,7 +59,7 @@ namespace Domain
         }
         public TEntity FindById(int id)
         {
-            return dbSet.
+            return dbSet.Find(id);
         }
 
         public virtual void Add(TEntity entity)
