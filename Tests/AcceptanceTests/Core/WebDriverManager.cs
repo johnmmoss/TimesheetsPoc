@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using TechTalk.SpecFlow;
 
-namespace AcceptanceTests.Core
+namespace TimesheetsPoc.Web.AcceptanceTests.Core
 {
     public class WebDriverManager
     {

@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace AcceptanceTests.Features
+namespace TimesheetsPoc.Web.AcceptanceTests.Features
 {
     using TechTalk.SpecFlow;
     

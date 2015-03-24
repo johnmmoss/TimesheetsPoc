@@ -1,6 +1,6 @@
 ﻿using TimesheetPoc.Persistence;
 
-namespace AcceptanceTests.Data
+namespace TimesheetsPoc.Web.AcceptanceTests.Data
 {
     public class DatabaseHelper
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AcceptanceTests.Pages;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TimesheetPoc.Domain;
 using TimesheetPoc.Persistence;
+using TimesheetsPoc.Web.AcceptanceTests.Pages;
 
-namespace AcceptanceTests
+namespace TimesheetsPoc.Web.AcceptanceTests.Steps
 {
     [Binding]
     public class TimeCodeSteps

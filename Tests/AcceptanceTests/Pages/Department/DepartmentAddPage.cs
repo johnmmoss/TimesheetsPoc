@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace AcceptanceTests.Pages
+namespace TimesheetsPoc.Web.AcceptanceTests.Pages
 {
     public class DepartmentAddPage
     {

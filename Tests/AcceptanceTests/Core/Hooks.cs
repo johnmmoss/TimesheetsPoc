@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
-using AcceptanceTests.Data;
-using AcceptanceTests.Pages;
+using TimesheetsPoc.Web.AcceptanceTests.Data;
+using TimesheetsPoc.Web.AcceptanceTests.Pages;
 using TechTalk.SpecFlow;
 
-namespace AcceptanceTests.Core
+namespace TimesheetsPoc.Web.AcceptanceTests.Core
 {
     [Binding]
     public class Hooks

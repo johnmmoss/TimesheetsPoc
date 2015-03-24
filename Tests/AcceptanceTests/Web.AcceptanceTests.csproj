@@ -7,8 +7,8 @@
     <ProjectGuid>{266F5BD4-2D37-4A1C-8C46-07886505EA29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AcceptanceTests</RootNamespace>
-    <AssemblyName>AcceptanceTests</AssemblyName>
+    <RootNamespace>TimesheetsPoc.Web.AcceptanceTests</RootNamespace>
+    <AssemblyName>TimesheetsPoc.Web.AcceptanceTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

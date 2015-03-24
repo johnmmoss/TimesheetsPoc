@@ -2,7 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium;
 
-namespace AcceptanceTests.Pages
+namespace TimesheetsPoc.Web.AcceptanceTests.Pages
 {
     public class TimeCodePage
     {

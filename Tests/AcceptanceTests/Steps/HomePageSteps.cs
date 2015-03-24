@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcceptanceTests
+namespace TimesheetsPoc.Web.AcceptanceTests
 {
     public class HomePageSteps
     {

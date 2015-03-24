@@ -1,10 +1,10 @@
-﻿using AcceptanceTests.Pages;
+﻿using TimesheetsPoc.Web.AcceptanceTests.Pages;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TimesheetPoc.Domain;
 using TimesheetPoc.Persistence;
 
-namespace AcceptanceTests.Steps
+namespace TimesheetsPoc.Web.AcceptanceTests.Steps
 {
     [Binding]
     public class DepartmentSteps

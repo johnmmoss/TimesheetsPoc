@@ -1,8 +1,8 @@
 ﻿using System.Configuration;
 using OpenQA.Selenium;
-using AcceptanceTests.Core;
+using TimesheetsPoc.Web.AcceptanceTests.Core;
 
-namespace AcceptanceTests.Pages
+namespace TimesheetsPoc.Web.AcceptanceTests.Pages
 {
     public class HomePage : BasePage
     {
