@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain;
 using TimesheetPoc.Domain;
-using TimesheetPoc.Persistence;
 
-namespace Domain.Core
+namespace TimesheetPoc.Persistence
 {
-    public class UnitOfWork : IUnitOfWork
+    public class SqlUnitOfWork : IUnitOfWork
     {
-        private TimesheetsContext context;
+        private ITimesheetsContext context;
 
-        public UnitOfWork()
+        public SqlUnitOfWork(ITimesheetsContext context)
         {
-            context = new TimesheetsContext();
+            this.context = context;
         }
 
         private SqlRepository<Department> departments;

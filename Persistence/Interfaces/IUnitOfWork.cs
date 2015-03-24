@@ -1,6 +1,6 @@
 ﻿using TimesheetPoc.Domain;
 
-namespace Domain
+namespace TimesheetPoc.Persistence
 {
     public interface IUnitOfWork
     {

@@ -14,5 +14,6 @@ namespace TimesheetPoc.Persistence
         int SaveChanges();
         DbEntityEntry<T> Entry<T>(T entity) where T : class;
         void Dispose();
+        DbSet<T> Set<T>() where T : class;
     }
 }

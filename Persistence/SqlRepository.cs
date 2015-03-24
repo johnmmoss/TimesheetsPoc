@@ -12,10 +12,10 @@ namespace Domain
     // Source http://www.asp.net/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
     public class SqlRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal TimesheetsContext context;
+        internal ITimesheetsContext context;
         internal DbSet<TEntity> dbSet;
 
-        public SqlRepository(TimesheetsContext context)
+        public SqlRepository(ITimesheetsContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

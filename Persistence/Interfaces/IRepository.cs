@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Domain
+namespace TimesheetPoc.Persistence
 {
     public interface IRepository<T>
     {

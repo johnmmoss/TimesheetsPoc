@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimesheetPoc.Domain;
+using TimesheetPoc.Domain.Interfaces;
+using TimesheetPoc.Persistence;
 
-namespace Domain
+namespace TimesheetPoc.Domain
 {
-    public class DepartmentService
+    public class DepartmentService : IDepartmentService
     {
         private readonly IUnitOfWork iUnitOfWork;
 

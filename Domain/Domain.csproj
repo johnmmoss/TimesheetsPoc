@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\UnitOfWork.cs" />
     <Compile Include="DepartmentService.cs" />
-    <Compile Include="Core\IRepository.cs" />
-    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IDepartmentService.cs" />
+    <Compile Include="Interfaces\ITimeCodeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\SqlRepository.cs" />
     <Compile Include="TimeCodeService.cs" />
   </ItemGroup>
   <ItemGroup>
