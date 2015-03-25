@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\AcceptanceTests\Web.AcceptanceTests\bin\Debug\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentServiceFixture.cs" />
+    <Compile Include="FakeDepartmentRepository.cs" />
+    <Compile Include="FakeRepository.cs" />
+    <Compile Include="FakeUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\Domain.csproj">
+      <Project>{FE7AD310-14C1-4A9E-A362-2982899D5593}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Entities\Entities.csproj">
+      <Project>{B9E16B44-850F-49B8-947E-DFD1A6C5ED68}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Persistence\Persistence.csproj">
+      <Project>{321E2370-6559-4783-93CD-4B7679479B03}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
