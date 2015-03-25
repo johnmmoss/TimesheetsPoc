@@ -46,9 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DepartmentServiceFixture.cs" />
-    <Compile Include="FakeDepartmentRepository.cs" />
-    <Compile Include="FakeRepository.cs" />
-    <Compile Include="FakeUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

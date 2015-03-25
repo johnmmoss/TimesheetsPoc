@@ -1,5 +1,5 @@
-﻿using Domain;
-using TimesheetPoc.Domain;
+﻿using TimesheetPoc.Domain;
+using TimesheetPoc.Persistence.Domain;
 
 namespace TimesheetPoc.Persistence
 {
@@ -12,7 +12,7 @@ namespace TimesheetPoc.Persistence
             this.context = context;
         }
 
-        private SqlRepository<Department> departments;
+        private IRepository<Department> departments;
         public IRepository<Department> Departments
         {
             get
@@ -23,9 +23,10 @@ namespace TimesheetPoc.Persistence
                 }
                 return departments;
             }
+            set { departments = value; }
         }
 
-        private SqlRepository<TimeCode> timeCodes; 
+        private IRepository<TimeCode> timeCodes; 
         public IRepository<TimeCode> TimeCodes
         {
             get
@@ -36,6 +37,7 @@ namespace TimesheetPoc.Persistence
                 }
                 return timeCodes;
             }
+            set { timeCodes = value; }
         }
         
         public void Save()

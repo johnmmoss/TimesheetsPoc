@@ -4,8 +4,8 @@ namespace TimesheetPoc.Persistence
 {
     public interface IUnitOfWork
     {
-        IRepository<Department> Departments { get; }
-        IRepository<TimeCode> TimeCodes { get; }
+        IRepository<Department> Departments { get; set; }
+        IRepository<TimeCode> TimeCodes { get; set; }
 
         void Save();
     }

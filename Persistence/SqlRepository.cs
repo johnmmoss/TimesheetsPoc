@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using TimesheetPoc.Persistence;
 
-namespace Domain
+namespace TimesheetPoc.Persistence.Domain
 {
     // Source http://www.asp.net/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
     public class SqlRepository<TEntity> : IRepository<TEntity> where TEntity : class

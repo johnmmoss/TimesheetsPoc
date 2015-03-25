@@ -1,42 +1,51 @@
 ﻿using NUnit.Framework;
+using Rhino.Mocks;
 using TimesheetPoc.Domain;
+using TimesheetPoc.Persistence;
 
 namespace TimesheetsPoc.Domain.UnitTests
 {
     public class DepartmentServiceFixture
     {
         private DepartmentService service;
+        private IUnitOfWork mockUnitOfWork;
+        private IRepository<Department> mockDepartmentsRepostiory;
+
+        [SetUp]
+        public void SetUp()
+        {
+            mockUnitOfWork = MockRepository.GenerateMock<IUnitOfWork>();
+            mockDepartmentsRepostiory = MockRepository.GenerateMock<IRepository<Department>>();
+            mockUnitOfWork.Stub(x => x.Departments).Return(mockDepartmentsRepostiory);
+
+            service = new DepartmentService(mockUnitOfWork);
+        }
 
         [Test]
         public void Add_AddsANewDepartment()
         {
-            var fakeUnitOfWork = new FakeUnitOfWork();
-            service = new DepartmentService(fakeUnitOfWork);
-
             service.Add(new Department());
 
-            Assert.IsTrue(fakeUnitOfWork.SaveWasCalled);
-            Assert.That(fakeUnitOfWork.Departments.FindAll().Count, Is.EqualTo(1));
+            mockDepartmentsRepostiory.AssertWasCalled(x => x.Add(Arg<Department>.Is.Anything));
+            mockUnitOfWork.AssertWasCalled(x => x.Save(), x => x.Repeat.Once());
         }
 
         [Test]
         public void Delete_DeletesADepartment()
         {
-            var department = new Department()
-                {
-                    Id = 7,
-                    Code = "ENG001",
-                    Name = "Department1"
-                };
-
-            var fakeUnitOfWork = new FakeUnitOfWork();
-            service = new DepartmentService(fakeUnitOfWork);
-            fakeUnitOfWork.Departments.Add(department);
-
             service.Delete(7);
 
-            Assert.IsTrue(fakeUnitOfWork.SaveWasCalled);
-            Assert.That(fakeUnitOfWork.Departments.FindAll().Count, Is.EqualTo(0));
+            mockDepartmentsRepostiory.AssertWasCalled(x => x.Delete(Arg<int>.Is.Equal(7)));
+            mockUnitOfWork.AssertWasCalled(x => x.Save(), x => x.Repeat.Once());
+        }
+
+        [Test]
+        public void Update_UpdatesADepartment()
+        {
+            service.Update(new Department());
+
+            mockDepartmentsRepostiory.AssertWasCalled(x => x.Update(Arg<Department>.Is.Anything));
+            mockUnitOfWork.AssertWasCalled(x => x.Save(), x => x.Repeat.Once());
         }
     }
 }
