@@ -21,9 +21,9 @@ namespace TimesheetPoc.Domain
         {
             return iUnitOfWork.TimeCodes.FindAll();
         }
-        public TimeCode GetTimeCodeByName(string name)
+        public TimeCode GetById(int id)
         {
-            return iUnitOfWork.TimeCodes.FindBy(x => x.Name == name).FirstOrDefault();
+            return iUnitOfWork.TimeCodes.FindBy(x => x.Id == id).FirstOrDefault();
         }
 
         public void Add(TimeCode timeCode)

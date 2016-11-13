@@ -15,7 +15,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TimesheetPoc.Domain;
+using TimesheetPoc.Domain.Interfaces;
 using TimesheetPoc.Persistence;
+using TimesheetPoc.Persistence.Domain;
 
 namespace TimesheetPoc.Web.DependencyResolution {
     using StructureMap.Configuration.DSL;
@@ -30,9 +33,17 @@ namespace TimesheetPoc.Web.DependencyResolution {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
+                    scan.AssemblyContainingType<IDepartmentService>();
+                    scan.AssemblyContainingType<ITimesheetsContext>();
                 });
 
-            For<ITimesheetsContext>().Use<TimesheetsContext>();
+            //For<ITimesheetsContext>().Use<TimesheetsContext>();
+            For<IUnitOfWork>().Use<SqlUnitOfWork>();
+            For<IRepository<DepartmentService>>().Use<SqlRepository<DepartmentService>>();
+            For<IRepository<TimeCodeService>>().Use<SqlRepository<TimeCodeService>>();
+            //For<IDepartmentService>().Use<DepartmentService>();
+            //For<ITimeCodeService>().Use<TimeCodeService>();
+            
         }
 
         #endregion

@@ -8,28 +8,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TimesheetPoc.Domain;
+using TimesheetPoc.Domain.Interfaces;
 using TimesheetPoc.Persistence;
 
 namespace TimesheetPoc.Web.Controllers
 {
     public class TimeCodeController : Controller
     {
-        private ITimesheetsContext _context;
+        private readonly ITimeCodeService _timeCodeService;
 
-        public TimeCodeController()
+        
+        public TimeCodeController(ITimeCodeService timeCodeService)
         {
-            _context = new TimesheetsContext();
-        }
-
-        public TimeCodeController(ITimesheetsContext context)
-        {
-            _context = context;
+            _timeCodeService = timeCodeService;
         }
 
         // GET: /TimeCode/
         public async Task<ActionResult> Index()
         {
-            return View(await _context.TimeCodes.ToListAsync());
+            return View(_timeCodeService.GetAll());
         }
 
         // GET: /TimeCode/Details/5
@@ -39,7 +36,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = _context.TimeCodes.Find(id);
+            TimeCode timecode = _timeCodeService.GetById(id.Value);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -62,8 +59,7 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.TimeCodes.Add(timecode);
-                _context.SaveChanges();
+                _timeCodeService.Add(timecode);
                 return RedirectToAction("Index");
             }
 
@@ -77,7 +73,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = _context.TimeCodes.Find(id);
+            TimeCode timecode = _timeCodeService.GetById(id.Value);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -94,8 +90,7 @@ namespace TimesheetPoc.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(timecode).State = EntityState.Modified;
-                _context.SaveChanges();
+                _timeCodeService.Update(timecode);
                 return RedirectToAction("Index");
             }
             return View(timecode);
@@ -108,7 +103,7 @@ namespace TimesheetPoc.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeCode timecode = _context.TimeCodes.Find(id);
+            TimeCode timecode = _timeCodeService.GetById(id.Value);
             if (timecode == null)
             {
                 return HttpNotFound();
@@ -121,19 +116,9 @@ namespace TimesheetPoc.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TimeCode timecode = _context.TimeCodes.Find(id);
-            _context.TimeCodes.Remove(timecode);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            _timeCodeService.Delete(id);
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
+            return RedirectToAction("Index");
         }
     }
 }

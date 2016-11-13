@@ -22,9 +22,9 @@ namespace TimesheetPoc.Domain
         {
             return iUnitOfWork.Departments.FindAll();
         }
-        public Department GetDepartmentByCode(string code)
+        public Department GetById(int id)
         {
-            return iUnitOfWork.Departments.FindBy(x => x.Code == code).FirstOrDefault();
+            return iUnitOfWork.Departments.FindBy(x => x.Id == id).FirstOrDefault();
         }
 
         public void Add(Department department)

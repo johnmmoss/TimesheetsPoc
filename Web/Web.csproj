@@ -212,6 +212,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{FE7AD310-14C1-4A9E-A362-2982899D5593}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{b9e16b44-850f-49b8-947e-dfd1a6c5ed68}</Project>
       <Name>Entities</Name>
