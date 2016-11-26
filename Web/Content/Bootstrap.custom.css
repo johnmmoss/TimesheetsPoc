@@ -1,0 +1,9 @@
+﻿
+
+/* Stop the modals sliding down from the top */
+.modal.fade .modal-dialog {
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0); // IE9 only
+          transform: translate(0, 0);
+
+ }
