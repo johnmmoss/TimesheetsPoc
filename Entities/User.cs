@@ -9,5 +9,8 @@ namespace TimesheetPoc.Domain
 {
     public class User : IdentityUser
     {
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+        public Department Department { get; set; }
     }
 }

@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201611121756473_AddAspNetIdentity.Designer.cs">
       <DependentUpon>201611121756473_AddAspNetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611272143581_AddUserFields.cs" />
+    <Compile Include="Migrations\201611272143581_AddUserFields.Designer.cs">
+      <DependentUpon>201611272143581_AddUserFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlRepository.cs" />
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611121756473_AddAspNetIdentity.resx">
       <DependentUpon>201611121756473_AddAspNetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611272143581_AddUserFields.resx">
+      <DependentUpon>201611272143581_AddUserFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

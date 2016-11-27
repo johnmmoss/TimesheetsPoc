@@ -15,7 +15,20 @@ namespace TimesheetPoc.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var context = new TimesheetsContext())
+            {
+                var users = context.Users.ToList().Select(x =>
+                    new UserModel
+                    {
+                        Id = x.Id,
+                        Firstname = x.Firstname,
+                        Surname = x.Surname,
+                        Email = x.Email,
+                        IsCurrentUser = x.Email == User.Identity.Name
+                    });
+
+                return View(users.AsEnumerable());
+            }
         }
 
         public ActionResult Create()
